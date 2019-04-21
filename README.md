@@ -25,4 +25,5 @@ Logger.info(function(){
    return foo + bar + zing;
 });
 ```
-**Methods**
+# Methods
+**info()**
