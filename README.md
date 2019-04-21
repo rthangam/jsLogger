@@ -26,4 +26,4 @@ Logger.info(function(){
 });
 ```
 **Methods**
-*info()*
+** info() **
