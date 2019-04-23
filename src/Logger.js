@@ -12,18 +12,21 @@ const Logger = (function() {
 	 *  
 	 */
 	const LOG_LEVELS = {
-		LEVEL_INFO:  0b0001,
-		LEVEL_WARN:  0b0010,
+		LEVEL_INFO: 0b0001,
+		LEVEL_WARN: 0b0010,
 		LEVEL_ERROR: 0b0011,
-		LEVEL_LOG:   0b0100, //TODO
-		LEVEL_NONE:  0b0101,
+		LEVEL_LOG: 0b0100, //TODO
+		LEVEL_NONE: 0b0101,
 	};
 
-	//Default writer to console
+
+	// //Default writer to console
 	let writer = console;
 
-	//Default logging to error
+	// //Default logging to error
 	let level = LOG_LEVELS.LEVEL_ERROR;
+
+
 
 	/**
 	 * [_okToLog description]
@@ -99,13 +102,21 @@ const Logger = (function() {
 	function _setOption(key, value) {
 		switch (key) {
 			case 'writer':
-				writer = value;
+				if (typeof value !== 'undefined') {
+					writer = value;
+				} else {
+					return writer;
+				}
 				break;
 			case 'level':
-				level = value;
+				if (typeof value !== 'undefined') {
+					level = value;
+				} else {
+					return level;
+				}
 				break;
 			default:
-				throw new Error("Invalid Logger property. Valid properties {level, writer}");
+				throw new Error(`Invalid Logger property ${key}. Valid properties {level, writer}`);
 		}
 	}
 
