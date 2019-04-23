@@ -34,7 +34,7 @@ const Logger = (function() {
 	 * @return {[type]}          [description]
 	 */
 	function _okToLog(logLevel) {
-		return level > logLevel;
+		return level < logLevel;
 	}
 
 
@@ -44,7 +44,7 @@ const Logger = (function() {
 	 * @return {[type]}         [description]
 	 */
 	function _printInfoMsg(...args) {
-		if (_okToLog(LOG_LEVELS.LEVEL_INFO)) {
+		if (!_okToLog(LOG_LEVELS.LEVEL_INFO)) {
 			return;
 		}
 		//Check if first argument is a callback 
@@ -62,7 +62,7 @@ const Logger = (function() {
 	 * @return {[type]}         [description]
 	 */
 	function _printWarnMsg(...args) {
-		if (_okToLog(LOG_LEVELS.LEVEL_WARN)) {
+		if (!_okToLog(LOG_LEVELS.LEVEL_WARN)) {
 			return;
 		}
 
@@ -81,7 +81,7 @@ const Logger = (function() {
 	 * @return {[type]}         [description]
 	 */
 	function _printErrorMsg(...args) {
-		if (_okToLog(LOG_LEVELS.LEVEL_ERROR)) {
+		if (!_okToLog(LOG_LEVELS.LEVEL_ERROR)) {
 			return;
 		}
 
